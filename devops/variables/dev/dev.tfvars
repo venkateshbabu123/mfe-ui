@@ -4,7 +4,7 @@ domain-name      = "skillsync"
 created_by       = "Terraform"
 managed_by       = "Github-actions"
 env              = "dev"
-default_region   = "us-west-1"
+default_region   = "ap-south-1"
 domain_name      = "skillsync"
 
 ######## bucket vars #######
@@ -18,9 +18,9 @@ ignore_public_acls       = true
 restrict_public_buckets  = true
 
 ####### sub domain config vars ######
-root_domain_name       = "microops.io"
+root_domain_name       = "demoprojectbc1.com"
 is_private_hosted_zone = false
-sub_domain_name        = "skillsync.microops.io"
+sub_domain_name        = "skillsync.demoprojectbc1.com"
 ns_record_ttl          = 172800
 
 ######## ACM config vars ############
@@ -37,7 +37,7 @@ is_distribution_enabled           = true
 is_ipv6_enabled                   = true
 commnet                           = "CloudFront distribution for course-mfe dev environment"
 default_root_object               = "index.html"
-cloudfront_aliases                = ["skillsync.microops.io"]
+cloudfront_aliases                = ["skillsync.demoprojectbc1.com"]
 allowed_methods                   = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
 cached_methods                    = ["GET", "HEAD", "OPTIONS"]
 viewer_protocol_policy            = "redirect-to-https"
