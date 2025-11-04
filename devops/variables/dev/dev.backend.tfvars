@@ -1,4 +1,4 @@
-bucket  = "ppe-terraform-backend-us-west-1"
-key     = "course-mfe/terraform.tfstate"
-region  = "us-west-1"
+bucket  = "anikamoments140224"
+key     = "course-ui/terraform.tfstate"
+region  = "ap-south-1"
 encrypt = true
