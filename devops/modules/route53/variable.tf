@@ -22,3 +22,13 @@ variable "ns_record_ttl" {
     error_message = "Invalid TTL"
   }
 }
+
+variable "cloudfront_domain_name" {
+  type        = string
+  description = "CloudFront distribution domain name for alias record (e.g., dxxxx.cloudfront.net)"
+}
+
+variable "cloudfront_hosted_zone_id" {
+  type        = string
+  description = "CloudFront distribution hosted zone ID for alias record"
+}

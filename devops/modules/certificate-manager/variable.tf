@@ -3,6 +3,12 @@ variable "domain_name" {
   description = "Domain name for the certificate"
 }
 
+variable "subject_alternative_names" {
+  type        = list(string)
+  description = "Optional list of Subject Alternative Names for the certificate"
+  default     = []
+}
+
 variable "default_tags" {
   type        = map(string)
   description = "Tags for the certificate"

@@ -33,26 +33,17 @@ module "s3" {
   }
 }
 
-# Create domain for course MFE as this is entry point. It will be root for SkillSync
-module "roue53" {
-  source              = "./modules/route53"
-  root_domain_zone_id = data.aws_route53_zone.root_domain.zone_id
-  sub_domain_name     = var.sub_domain_name
-  default_tags        = local.default_tags
-  ns_record_ttl       = var.ns_record_ttl
-}
-
-# Create certificate for cloud front distribution course mfe
-
+# Create certificate for CloudFront for the desired alternate domain
 module "acm" {
   source             = "./modules/certificate-manager"
   default_tags       = local.default_tags
   certificate_region = var.cloudfront_acm_region
-  domain_name        = "*.${var.sub_domain_name}"
+  domain_name        = var.sub_domain_name
+  subject_alternative_names = ["*.${var.sub_domain_name}"]
   validation_method  = var.validation_method
   allow_exports      = var.allow_exports
   key_algorithm      = var.key_algorithm
-  domain_zone_id     = module.roue53.subdomain_details.zone_id
+  domain_zone_id     = data.aws_route53_zone.root_domain.zone_id
   providers = {
     aws = aws.alias_us_east_1
   }
@@ -82,7 +73,17 @@ module "cloudfront" {
   wait_for_deployment               = var.wait_for_deployment
   cloudfront_price_class            = var.cloudfront_price_class
   ssl_support_method                = var.ssl_support_method
-  depends_on                        = [module.acm]
+}
+
+# Create DNS records in existing hosted zone pointing to CloudFront
+module "roue53" {
+  source                   = "./modules/route53"
+  root_domain_zone_id      = data.aws_route53_zone.root_domain.zone_id
+  sub_domain_name          = var.sub_domain_name
+  default_tags             = local.default_tags
+  ns_record_ttl            = var.ns_record_ttl
+  cloudfront_domain_name   = module.cloudfront.couldfront_distribution_details.domain_name
+  cloudfront_hosted_zone_id = module.cloudfront.couldfront_distribution_details.hosted_zone_id
 }
 
 module "iam" {

@@ -3,9 +3,9 @@ output "s3_details" {
   value       = module.s3.course_mfe_s3_bucket_details
 }
 
-output "sub_domain_details" {
-  description = "SkillSync sub domain details"
-  value       = module.roue53.subdomain_details
+output "dns_alias_records" {
+  description = "Alias A/AAAA records created for the subdomain pointing to CloudFront"
+  value       = module.roue53.route53_alias_records
 }
 
 output "cloudfront_certificate_details" {

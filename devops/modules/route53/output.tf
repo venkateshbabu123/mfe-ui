@@ -1,9 +1,10 @@
-output "subdomain_details" {
-  description = "Subdomain details"
+output "route53_alias_records" {
+  description = "Alias records created for CloudFront in the existing hosted zone"
   value = {
-    zone_id = aws_route53_zone.skillsync.zone_id
-    arn     = aws_route53_zone.skillsync.arn
-    NS      = aws_route53_zone.skillsync.name_servers
-    SOA     = aws_route53_zone.skillsync.primary_name_server
+    name        = aws_route53_record.cf_alias_a.name
+    zone_id     = var.root_domain_zone_id
+    a_fqdn      = aws_route53_record.cf_alias_a.fqdn
+    target      = var.cloudfront_domain_name
+    target_zone = var.cloudfront_hosted_zone_id
   }
 }
