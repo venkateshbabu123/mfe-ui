@@ -46,7 +46,7 @@ jobs:
           if [[ "$action" = "Destroy" ]]; then
             terraform plan -destroy -var-file="variables/dev/dev.tfvars" -out=tfplan-destroy
           else
-            terraform plan -var-file="variables/dev/dev/tfvars" -out=tfplan
+            terraform plan -var-file="variables/dev/dev.tfvars" -out=tfplan
           fi
         shell: bash
       - name: Terraform apply
