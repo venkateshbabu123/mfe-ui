@@ -59,7 +59,5 @@ jobs:
         if: ${{ github.event.inputs.action == 'Destroy' }}
         working-directory: devops
         run: |
-          terraform state list
-          terraform show -json tfplan-destroy
           terraform destroy -auto-approve
 
