@@ -57,5 +57,5 @@ jobs:
         run: |
           ls -lrt
           ls -lrth course-mfe
-          aws s3 sync course-mfe ${{ secrets.S3_BUCKET }}
+          aws s3 sync course-mfe s3://${{ secrets.S3_BUCKET }}
 
