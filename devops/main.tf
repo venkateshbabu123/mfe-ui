@@ -55,7 +55,7 @@ module "cloudfront" {
   source                            = "./modules/cloudfront"
   env                               = var.env
   default_tags                      = local.default_tags
-  oac_name                          = "${var.s3_bucket_name}-cloudfront-distribution-oac"
+  oac_name                          = "${var.s3_bucket_name}-cloudfront-distribution-oac1"
   origin_access_control_origin_type = var.origin_access_control_origin_type
   signing_behavior                  = var.signing_behavior
   bucket_regional_domain_name       = module.s3.course_mfe_s3_bucket_details.bucket_regional_domain_name
