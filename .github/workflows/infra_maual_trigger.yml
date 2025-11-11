@@ -53,12 +53,12 @@ jobs:
           fi
         shell: bash
 
-      - name: Terraform apply
-        working-directory: devops
-        if: ${{ github.event.inputs.action == 'Apply' }}
-        run: |
-          terraform show -json tfplan
-          terraform apply -auto-approve tfplan
+      # - name: Terraform apply
+      #   working-directory: devops
+      #   if: ${{ github.event.inputs.action == 'Apply' }}
+      #   run: |
+      #     terraform show -json tfplan
+      #     terraform apply -auto-approve tfplan
 
       - name: Terraform destroy
         if: ${{ github.event.inputs.action == 'Destroy' }}
