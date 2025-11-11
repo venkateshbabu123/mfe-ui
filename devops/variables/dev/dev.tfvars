@@ -1,10 +1,10 @@
 application_name = "course-mfe"
-region           = "eu-west-2"
+region           = "us-east-1"
 domain-name      = "skillsync"
 created_by       = "Terraform"
 managed_by       = "Github-actions"
 env              = "dev"
-default_region   = "eu-west-2"
+default_region   = "us-east-1"
 domain_name      = "skillsync"
 
 ######## bucket vars #######

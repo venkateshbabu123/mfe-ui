@@ -1,4 +1,4 @@
-bucket  = "venkimoments111120251"
+bucket  = "venkimoments111120252"
 key     = "course-ui/terraform.tfstate"
-region  = "eu-west-2"
+region  = "us-east-1"
 encrypt = true
