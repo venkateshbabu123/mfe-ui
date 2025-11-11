@@ -1,10 +1,10 @@
 application_name = "course-mfe"
-region           = "us-west-1"
+region           = "eu-west-2"
 domain-name      = "skillsync"
 created_by       = "Terraform"
 managed_by       = "Github-actions"
 env              = "dev"
-default_region   = "ap-south-1"
+default_region   = "eu-west-2"
 domain_name      = "skillsync"
 
 ######## bucket vars #######
@@ -18,9 +18,9 @@ ignore_public_acls       = true
 restrict_public_buckets  = true
 
 ####### sub domain config vars ######
-root_domain_name       = "demoprojectbc1.com"
+root_domain_name       = "demoprojectvenki.uk"
 is_private_hosted_zone = false
-sub_domain_name        = "skillsync.demoprojectbc1.com"
+sub_domain_name        = "skillsync.demoprojectvenki.uk"
 ns_record_ttl          = 172800
 
 ######## ACM config vars ############
@@ -49,4 +49,3 @@ ssl_support_method                = "sni-only"
 ######## IAM Policy vars ############
 sid            = "AllowCloudFrontServiceReadOnlyPrincipal"
 s3_permissions = ["s3:GetObject"]
-
