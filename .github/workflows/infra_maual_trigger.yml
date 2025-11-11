@@ -33,7 +33,7 @@ jobs:
         with:
           aws-region: ${{ secrets.AWS_REGION }}
           role-to-assume: ${{ secrets.ASSUME_ROLE }}
-          
+
       - name: Get caller identity
         run: aws sts get-caller-identity
       - name: Initialize terraform
@@ -60,8 +60,8 @@ jobs:
           terraform show -json tfplan
           terraform apply -auto-approve tfplan
 
-      # - name: Terraform destroy
-      #   if: ${{ github.event.inputs.action == 'Destroy' }}
-      #   working-directory: devops
-      #   run: |
-      #     terraform destroy -auto-approve -var-file="variables/dev/dev.tfvars"
+      - name: Terraform destroy
+        if: ${{ github.event.inputs.action == 'Destroy' }}
+        working-directory: devops
+        run: |
+          terraform destroy -auto-approve -var-file="variables/dev/dev.tfvars"
